@@ -7,9 +7,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Component
-public class CarServiceImpl implements CarService{
+public class CarServiceImpl implements CarService {
 
     private List<Car> cars;
+
     {
         cars = new ArrayList<>();
         cars.add(new Car("BMW", 123, "red"));
@@ -18,8 +19,9 @@ public class CarServiceImpl implements CarService{
         cars.add(new Car("Suzuki", 345, "white"));
         cars.add(new Car("reno", 367, "black"));
     }
+
     @Override
     public List<Car> getListCar(int count) {
-        return cars.subList(0,count);
+        return cars.stream().limit(count).toList();
     }
 }
